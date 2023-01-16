@@ -1,0 +1,21 @@
+item_max: 20
+media_path: ./media
+url_base: http://www.sa-y.com/podcast/media
+email: feed@teto.sa-y.com(teto)
+title: teto
+link: http://www.sa-y.com/podcast/
+description: teto's audio
+category: Music
+language: ja-jp
+copyright: teto
+generator: dir2feed
+ttl: 60
+itunes_author: teto
+itunes_subtitle: teto's audio
+itunes_category: Music
+itunes_subcategory: Music Commentary
+itunes_summary: radio
+itunes_keywords: teto
+itunes_explicit: clean
+image_url: http://www.sa-y.com/podcast/teto/teto.jpg
+image_title: teto
