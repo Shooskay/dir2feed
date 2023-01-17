@@ -1,9 +1,8 @@
 <?php
-#require_once('/usr/share/php/yaml/yaml.php');
 require_once(__DIR__."/vendor/autoload.php");
 require_once("rss_item.php");
-/// 更新日時順で並び替える関数
-#$sort_by_lastmod = function($a, $b) {return filemtime($b) - filemtime($a);}
+/// 更新日時降順で並び替えるための関数
+function sort_by_lastmod($a, $b) {return filemtime($b) - filemtime($a);}
 
 class Channel
 {
@@ -16,18 +15,19 @@ class Channel
         $this->_load_config();
         $this->_load_items();
     }
-    public function _load_config(){
+    private function _load_config(){
         $this->channel_info = \Symfony\Component\Yaml\Yaml::parsefile($this->config_path);
     }
 
-    public function _load_items(){
+    private function _load_items(){
         $max = $this->channel_info['item_max'];
         if (!($max > 0 ))
             $max = 1;
         $media_dir = dir($this->channel_info['media_path']); # "./media"
         $media_path = $this->channel_info['media_path'];
         $files = glob( $media_path.'/*' );
-        #usort( $files, $sort_by_lastmod );
+        #$files = $this->_get_media_file_list($media_path);
+        usort( $files, "sort_by_lastmod" );
         $url_base = $this->channel_info['url_base'];
         $author = $this->channel_info['email'];
         foreach( $files as $file ) {
@@ -38,6 +38,12 @@ class Channel
             }
         }
         return;
+    }
+    private function _get_media_file_list($media_path){
+        $exts=["*mp3","*m4a"];
+        $glob_list = implode(',', $exts);
+        $target = $media_path."/{{$glob_list}}";
+        return glob($target, GLOB_BRACE);
     }
 
     public function disp() {

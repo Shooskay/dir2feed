@@ -22,8 +22,8 @@ class MediaInfo{
         $this->pubDate = date("r",filemtime($file_path));
         $getid3 = new getID3();
         $this->fileinfo = $getid3->analyze($file_path);
-        if ($this->fileinfo === false) {
-            return false;
+		if (isset($this->fileinfo['error'])) {
+            return;
         }
 
         getid3_lib::CopyTagsToComments($this->fileinfo);

@@ -10,4 +10,4 @@ RUN update-ca-certificates
 RUN apt-get update && apt-get install -y libyaml-dev vim curl git tzdata
 COPY  --from=composer /usr/bin/composer /usr/bin/composer
 COPY src /var/www/html
-RUN composer install
+RUN composer install -q
