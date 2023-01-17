@@ -4,7 +4,7 @@ services:
     build: .
     tty: true
     ports:
-      - "6680:80"
+      - "80:80"
     volumes:
       - config:/var/www/html/conf.d
       - media:/var/www/html/media
