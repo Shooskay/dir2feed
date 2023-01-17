@@ -47,13 +47,13 @@ class Channel
         <channel>
          <title>{$this->channel_info['title']}</title>
          <link>{$this->channel_info['link']}</link>
-         <description>{$this->channel_info['email']}</description>
-         <category>{$this->channel_info['email']}</category>
+         <description>{$this->channel_info['description']}</description>
+         <category>{$this->channel_info['category']}</category>
          <pubDate{$date_time}</pubDate>
          <lastBuildDate>{$date_time}</lastBuildDate>
-         <language>{$this->channel_info['email']}</language>
-         <copyright>{$this->channel_info['email']}</copyright>
-         <generator>{$this->channel_info['email']}</generator>
+         <language>{$this->channel_info['language']}</language>
+         <copyright>{$this->channel_info['copyright']}</copyright>
+         <generator>{$this->channel_info['generator']}</generator>
          <managingEditor>{$this->channel_info['email']}</managingEditor>
          <webMaster>{$this->channel_info['email']}</webMaster>
          <ttl>{$this->channel_info['ttl']}</ttl>
